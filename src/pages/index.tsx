@@ -1,8 +1,8 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-
-import Counter from '../features/counter/Counter'
-import styles from '../styles/Home.module.css'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Counter from '../features/counter/Counter';
+import { Button } from "@mui/material";
+import styles from '../styles/Home.module.css';
 
 const IndexPage: NextPage = () => {
   return (
@@ -46,14 +46,7 @@ const IndexPage: NextPage = () => {
             Redux Toolkit
           </a>
           ,<span> and </span>
-          <a
-            className={styles.link}
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
+          <Button variant="contained">React Redux</Button>
         </span>
       </header>
     </div>
