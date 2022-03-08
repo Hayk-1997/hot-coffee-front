@@ -1,6 +1,5 @@
 import * as React from 'react';
-import Head from 'next/head';
-import Document, { Html, Main, NextScript } from 'next/document';
+import Document, { Html, Main, Head, NextScript } from 'next/document';
 import createEmotionServer from "@emotion/server/create-instance";
 import createEmotionCache from '../config/miui/createEmotionCache';
 import theme from '../config/miui/theme';
