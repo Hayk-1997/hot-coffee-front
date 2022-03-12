@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Document, { Html, Main, Head, NextScript } from 'next/document';
-import createEmotionServer from "@emotion/server/create-instance";
+import createEmotionServer from '@emotion/server/create-instance';
+import { ServerStyleSheets } from '@material-ui/core';
 import createEmotionCache from '../config/miui/createEmotionCache';
 import theme from '../config/miui/theme';
 
@@ -16,7 +17,6 @@ export default class MyDocument extends Document {
                         rel="stylesheet"
                         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
                     />
-                    <title>Hot Coffee</title>
                     {/* Inject MUI styles first to match with the prepend: true configuration. */}
                     {(this.props as any).emotionStyleTags}
                 </Head>
@@ -60,14 +60,12 @@ MyDocument.getInitialProps = async (ctx) => {
     // However, be aware that it can have global side effects.
     const cache = createEmotionCache();
     const { extractCriticalToChunks } = createEmotionServer(cache);
+    const sheets = new ServerStyleSheets();
 
     ctx.renderPage = () =>
         originalRenderPage({
-            enhanceApp: (App: any) =>
-                function EnhanceApp(props) {
-                    return <App emotionCache={cache} {...props} />;
-                },
-        });
+            enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+        })
 
     const initialProps = await Document.getInitialProps(ctx);
     // This is important. It prevents emotion to render invalid HTML.
@@ -85,5 +83,9 @@ MyDocument.getInitialProps = async (ctx) => {
     return {
         ...initialProps,
         emotionStyleTags,
-    };
+        styles: [
+            ...React.Children.toArray(initialProps.styles),
+            sheets.getStyleElement(),
+        ],
+    }
 };
