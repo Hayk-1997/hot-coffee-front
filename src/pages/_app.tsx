@@ -9,6 +9,9 @@ import theme from '../config/miui/theme';
 import createEmotionCache from '../config/miui/createEmotionCache';
 import store from '../app/store';
 
+// @TODO need to add ths stylesheet in _document!
+import '../styles/global.scss';
+
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 

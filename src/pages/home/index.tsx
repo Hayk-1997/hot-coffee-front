@@ -1,15 +1,30 @@
-import Layout from "../../components/layout";
-import type {ReactElement} from "react";
+import type { ReactElement } from 'react';
+import MainLayout from '../../layouts/mainLayout';
+import HomeBanner from '../../features/HomeBanner';
+import Intro from '../../features/Intro';
+import useStyles from './useStyles';
+import Discovery from '../../features/Discover';
 
+export default function Home (): JSX.Element {
+    const styles = useStyles();
 
-export default function Home() {
-    return <div>HomePage</div>
+    return (
+       <>
+           <section className={styles.homeBanner}>
+               <HomeBanner />
+           </section>
+           <section className="ftco-intro">
+               <Intro />
+           </section>
+           <Discovery />
+       </>
+    )
 }
 
 Home.getLayout = (page: ReactElement) => {
     return (
-        <Layout>
+        <MainLayout title="Home">
             {page}
-        </Layout>
+        </MainLayout>
     )
 }
