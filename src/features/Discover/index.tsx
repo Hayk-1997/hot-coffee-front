@@ -1,15 +1,12 @@
-import Image from 'next/image';
-import temporaryImage from '../../assets/images/about.jpg';
+import useStyles from './useStyles';
 
 export default function Discovery (): JSX.Element {
+
+    const styles = useStyles();
+
     return (
         <section className="ftco-about d-md-flex">
-            <div className="one-half img">
-                <Image
-                    src={temporaryImage}
-                    layout="fixed"
-                />
-            </div>
+            <div className={'one-half img ' + styles.image}/>
             <div className="one-half">
                 <div className="overlap">
                     <div className="heading-section">
