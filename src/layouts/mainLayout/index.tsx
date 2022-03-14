@@ -1,12 +1,14 @@
-import Head from 'next/head'
 import * as React from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
+
 
 interface ILayout {
     title: string,
     children: React.ReactElement
 }
 
-export default function MainLayout({ children, title }: ILayout) {
+export default function MainLayout({children, title}: ILayout) {
     return (
         <>
             <Head>
@@ -37,7 +39,16 @@ export default function MainLayout({ children, title }: ILayout) {
                                 </div>
                             </li>
                             <li className="nav-item"><a href="contact.html" className="nav-link">Contact</a></li>
-                            <li className="nav-item cart"><a href="cart.html" className="nav-link"><span className="icon icon-shopping_cart"/><span
+                            <li className="nav-item">
+                                <Link
+                                    href="/login"
+                                >
+                                    <span className="nav-link">Login</span>
+                                </Link>
+                                <a href="contact.html" ></a>
+                            </li>
+                            <li className="nav-item cart"><a href="cart.html" className="nav-link"><span
+                                className="icon icon-shopping_cart"/><span
                                 className="bag d-flex justify-content-center align-items-center"><small>1</small></span></a>
                             </li>
                         </ul>
