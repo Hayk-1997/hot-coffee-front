@@ -19,6 +19,7 @@ export default function Home (): JSX.Element {
     )
 }
 
+
 Home.getLayout = (page: ReactElement) => {
     return (
         <MainLayout title="Home">
