@@ -3,7 +3,7 @@ import MainLayout from '../../layouts/mainLayout';
 import HomeBanner from '../../features/HomeBanner';
 import Intro from '../../features/Intro';
 import Discovery from '../../features/Discover';
-import useStyles from '../../styles/mui/home/useStyles';
+import useStyles from '../../styles/mui/home';
 
 export default function Home (): JSX.Element {
     const styles = useStyles();
