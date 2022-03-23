@@ -10,6 +10,15 @@ export default makeStyles(theme => ({
         display: 'flex',
         alignItems: 'center',
     },
+    gridBox: {
+        backgroundColor: '#3a3a3a78'
+    },
+    multilineColor: {
+        "& .MuiFilledInput-root": {
+            background: "rgb(0 0 0 / 29%)",
+            color: theme.palette.primary.main
+        },
+    },
     loginForm: {
         width: '100%',
     }

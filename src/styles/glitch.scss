@@ -388,6 +388,7 @@
 
 
 .glitch__img {
+  z-index: -1;
 
   &:after {
     position: absolute;

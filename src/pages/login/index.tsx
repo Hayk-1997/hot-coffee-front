@@ -1,9 +1,15 @@
 import cn from 'classnames';
 import { Grid } from '@mui/material';
+import { TextField } from '@mui/material';
+import {SubmitHandler, useForm} from 'react-hook-form';
+import { TLoginInputs } from '../../types/login';
 import useStyles from '../../styles/mui/signIn';
 
 export default function Login () {
     const styles = useStyles();
+    const { register, handleSubmit, watch, formState: { errors } } = useForm<TLoginInputs>();
+
+    const onSubmit: SubmitHandler<TLoginInputs> = data => console.log(data);
 
     return (
         <Grid container className="demo-1 render imgloaded">
@@ -22,37 +28,77 @@ export default function Login () {
                 >
                     <Grid
                         item
-                        lg={4}
-                        md={6}
-                        xs={10}
+                        lg={6}
                     >
-                        <form action="#" className={cn('login-form', styles.loginForm)}>
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <div className="form-group">
-                                        <input type="text" className="form-control" placeholder="Your Name" />
+                        <Grid
+                            container
+                            direction="row"
+                            justifyContent="center"
+                            alignItems="center"
+                            height="100vh"
+                            className={styles.gridBox}
+                        >
+                            <Grid
+                                item
+                                lg={4}
+                                md={6}
+                                xs={10}
+                            >
+                                <form
+                                    action="#"
+                                    className={cn('login-form', styles.loginForm)}
+                                    onSubmit={handleSubmit(onSubmit)}
+                                >
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <div className="form-group">
+                                                <TextField
+                                                    name="name"
+                                                    placeholder="Your Name"
+                                                    fullWidth
+                                                    variant="filled"
+                                                    className={styles.multilineColor}
+                                                    {...register('name',  { required: true })}
+                                                    error={!!errors.name}
+                                                />
+                                                {errors.name && "Name is required"}
+                                            </div>
+                                        </div>
+                                        <div className="col-md-12">
+                                            <div className="form-group">
+                                                <TextField
+                                                    name="email"
+                                                    placeholder="Your Email"
+                                                    fullWidth
+                                                    variant="filled"
+                                                    className={styles.multilineColor}
+                                                    {...register('email',  { required: true })}
+                                                    error={!!errors.email}
+                                                />
+                                                {errors.email && "Email is required"}
+                                            </div>
+                                        </div>
+                                        <div className="col-md-12">
+                                            <div className="form-group">
+                                                <TextField
+                                                    name="password"
+                                                    placeholder="Your Password"
+                                                    fullWidth
+                                                    variant="filled"
+                                                    className={styles.multilineColor}
+                                                    {...register('password',  { required: true })}
+                                                    error={!!errors.password}
+                                                />
+                                                {errors.password && "Password is required"}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="col-md-12">
                                     <div className="form-group">
-                                        <input type="text" className="form-control" placeholder="Your Email" />
+                                        <input type="submit" value="Send Message" className="btn btn-primary py-3 px-5" />
                                     </div>
-                                </div>
-                                <div className="col-md-12">
-                                    <div className="form-group">
-                                        <input type="text" className="form-control" placeholder="Your Password" />
-                                    </div>
-                                </div>
-                                <div className="col-md-12">
-                                    <div className="form-group">
-                                        <input type="text" className="form-control" placeholder="Confirm Password" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <input type="submit" value="Send Message" className="btn btn-primary py-3 px-5" />
-                            </div>
-                        </form>
+                                </form>
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>
