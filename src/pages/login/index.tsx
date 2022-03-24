@@ -2,7 +2,7 @@ import { Grid } from '@mui/material';
 import { TextField } from '@mui/material';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { TLoginInputs } from '../../types/login';
-import InputErrorMessage from '../../features/Inputs/InputErrorMessage;
+import InputErrorMessage from '../../features/Inputs/InputErrorMessage';
 import cn from 'classnames';
 
 import useStyles from '../../styles/mui/signIn';
