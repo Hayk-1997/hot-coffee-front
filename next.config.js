@@ -20,5 +20,14 @@ module.exports = {
     images: {
         domains: ['images.unsplash.com'],
     },
-    swcMinify: false
+    swcMinify: false,
+    async redirects() {
+        return [
+            {
+                source: '/',
+                destination: '/home',
+                permanent: true,
+            },
+        ]
+    },
 }
