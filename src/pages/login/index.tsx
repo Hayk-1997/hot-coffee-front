@@ -1,11 +1,13 @@
-import cn from 'classnames';
 import { Grid } from '@mui/material';
 import { TextField } from '@mui/material';
-import {SubmitHandler, useForm} from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { TLoginInputs } from '../../types/login';
+import InputErrorMessage from '../../features/Inputs/InputErrorMessage;
+import cn from 'classnames';
+
 import useStyles from '../../styles/mui/signIn';
 
-export default function Login () {
+export default function Login() {
     const styles = useStyles();
     const { register, handleSubmit, watch, formState: { errors } } = useForm<TLoginInputs>();
 
@@ -61,7 +63,7 @@ export default function Login () {
                                                     {...register('name',  { required: true })}
                                                     error={!!errors.name}
                                                 />
-                                                {errors.name && "Name is required"}
+                                                {errors.name && <InputErrorMessage message="Name is required" />}
                                             </div>
                                         </div>
                                         <div className="col-md-12">
@@ -75,7 +77,7 @@ export default function Login () {
                                                     {...register('email',  { required: true })}
                                                     error={!!errors.email}
                                                 />
-                                                {errors.email && "Email is required"}
+                                                {errors.email && <InputErrorMessage message="Email is required" /> }
                                             </div>
                                         </div>
                                         <div className="col-md-12">
@@ -89,7 +91,7 @@ export default function Login () {
                                                     {...register('password',  { required: true })}
                                                     error={!!errors.password}
                                                 />
-                                                {errors.password && "Password is required"}
+                                                {errors.password && <InputErrorMessage message="Password is required" /> }
                                             </div>
                                         </div>
                                     </div>
