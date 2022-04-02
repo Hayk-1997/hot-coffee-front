@@ -3,15 +3,22 @@ import { TextField } from '@mui/material';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { TLoginInputs } from '../../types/login';
 import InputErrorMessage from '../../features/Inputs/InputErrorMessage';
+import { signIn, signOut, useSession } from "next-auth/react";
 import cn from 'classnames';
 
 import useStyles from '../../styles/mui/signIn';
 
-export default function Login() {
+const Login = () => {
     const styles = useStyles();
     const { register, handleSubmit, watch, formState: { errors } } = useForm<TLoginInputs>();
 
-    const onSubmit: SubmitHandler<TLoginInputs> = data => console.log(data);
+    const onSubmit: SubmitHandler<TLoginInputs> = data => {
+        console.log(data);
+    }
+
+    const handleSignIn = () => {
+        signIn();
+    }
 
     return (
         <Grid container className="demo-1 render imgloaded">
@@ -99,6 +106,9 @@ export default function Login() {
                                         <input type="submit" value="Send Message" className="btn btn-primary py-3 px-5" />
                                     </div>
                                 </form>
+                                <div className="form-group" >
+                                    <input onClick={handleSignIn} type="button" value="Social Login" className="btn btn-primary py-3 px-5" />
+                                </div>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -107,3 +117,6 @@ export default function Login() {
         </Grid>
     )
 }
+
+
+export default Login;

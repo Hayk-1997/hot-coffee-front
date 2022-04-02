@@ -5,7 +5,7 @@ import Intro from '../../features/Intro';
 import Discovery from '../../features/Discover';
 import useStyles from '../../styles/mui/home';
 
-export default function Home (): JSX.Element {
+const Home = (): JSX.Element => {
     const styles = useStyles();
 
     return (
