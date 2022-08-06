@@ -30,7 +30,7 @@ export default function MainLayout({children, title}: ILayout) {
                             <li className="nav-item"><a href="about.html" className="nav-link">About</a></li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="room.html" id="dropdown04"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+                                   data-toggle="dropdown" aria-expanded="false">Shop</a>
                                 <div className="dropdown-menu" aria-labelledby="dropdown04">
                                     <a className="dropdown-item" href="shop.html">Shop</a>
                                     <a className="dropdown-item" href="product-single.html">Single Product</a>
