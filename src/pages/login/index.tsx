@@ -2,11 +2,11 @@ import { useDispatch } from 'react-redux';
 import { Grid } from '@mui/material';
 import { TextField } from '@mui/material';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { TLoginInputs } from '../../types/User/login';
+import { TLoginInputs } from '../../types/user/login';
 import InputErrorMessage from '../../features/Inputs/InputErrorMessage';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { userAsyncLogin } from './slice';
 import cn from 'classnames';
+import {userAsyncLogin} from '../../app/reducers/user/login';
 
 import useStyles from '../../styles/mui/signIn';
 
