@@ -1,4 +1,4 @@
-import useStyles from "../../../styles/mui/input";
+import useStyles from '../../../styles/mui/input';
 
 export default function InputErrorMessage({ message }) {
     const styles = useStyles();

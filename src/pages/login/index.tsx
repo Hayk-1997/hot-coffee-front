@@ -1,19 +1,23 @@
+import { useDispatch } from 'react-redux';
 import { Grid } from '@mui/material';
 import { TextField } from '@mui/material';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { TLoginInputs } from '../../types/login';
+import { TLoginInputs } from '../../types/User/login';
 import InputErrorMessage from '../../features/Inputs/InputErrorMessage';
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from 'next-auth/react';
+import { userAsyncLogin } from './slice';
 import cn from 'classnames';
 
 import useStyles from '../../styles/mui/signIn';
 
-const Login = () => {
-    const styles = useStyles();
-    const { register, handleSubmit, watch, formState: { errors } } = useForm<TLoginInputs>();
 
-    const onSubmit: SubmitHandler<TLoginInputs> = data => {
-        console.log(data);
+const Login = () => {
+    const { register, handleSubmit, watch, formState: { errors } } = useForm<TLoginInputs>();
+    const dispatch = useDispatch();
+    const styles = useStyles();
+
+    const onSubmit: SubmitHandler<TLoginInputs> = formData => {
+        dispatch(userAsyncLogin(formData));
     }
 
     const handleSignIn = () => {
@@ -104,11 +108,16 @@ const Login = () => {
                                         </div>
                                     </div>
                                     <div className="form-group">
-                                        <input type="submit" value="Send Message" className="btn btn-primary py-3 px-5" />
+                                        <input type="submit" value="Sign In" className="btn btn-primary py-3 px-5" />
                                     </div>
                                 </form>
                                 <div className="form-group" >
-                                    <input onClick={handleSignIn} type="button" value="Social Login" className="btn btn-primary py-3 px-5" />
+                                    <input
+                                        type="button"
+                                        value="With Social"
+                                        className="btn btn-primary py-3 px-5"
+                                        onClick={handleSignIn}
+                                    />
                                 </div>
                             </Grid>
                         </Grid>
